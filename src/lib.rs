@@ -57,7 +57,7 @@ impl Emu {
         self.stack[self.sp as usize]
     }
 
-    pub fn get_sound_state(&mut self) -> bool {
+    pub fn get_sound_state(&self) -> bool {
         self.beeping
     }
 
