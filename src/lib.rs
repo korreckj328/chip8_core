@@ -43,7 +43,7 @@ pub struct Emu {
     keys: [bool; NUM_KEYS],
     dt: u8,
     st: u8,
-    beeping: bool,
+    pub beeping: bool,
 }
 
 impl Emu {
