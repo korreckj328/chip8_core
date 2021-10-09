@@ -154,7 +154,7 @@ impl Emu {
             },
             //vx = nn
             (6,_,_,_) => {
-                letx = digit2 as usize;
+                let x = digit2 as usize;
                 let nn = (op & 0xFF) as u8;
                 self.v_reg[x] = nn;
             },
@@ -301,7 +301,7 @@ impl Emu {
             },
             // skip if key not pressed
             (0xE, _, 0xA, 1) => {
-                let x  = digit2 as usize;
+                let x = digit2 as usize;
                 let vx = self.v_reg[x];
                 let key = self.keys[vx as usize];
                 if !key {
