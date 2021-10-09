@@ -43,6 +43,7 @@ pub struct Emu {
     keys: [bool; NUM_KEYS],
     dt: u8,
     st: u8,
+    beeping: bool,
 }
 
 impl Emu {
@@ -54,6 +55,10 @@ impl Emu {
     fn pop(&mut self) -> u16 {
         self.sp -= 1;
         self.stack[self.sp as usize]
+    }
+
+    pub fn get_sound_state(&mut self) -> bool {
+        self.beeping
     }
 
     pub fn new() -> Self {
@@ -68,6 +73,7 @@ impl Emu {
             keys: [false; NUM_KEYS],
             dt: 0,
             st: 0,
+            beeping: false,
         };
 
         new_emu.ram[..FONTSET_SIZE].copy_from_slice(&FONTSET);
@@ -414,7 +420,9 @@ impl Emu {
 
         if self.st > 0 {
             if self.st == 1 {
-                print!("BEEEP");
+                self.beeping = true;
+            } else {
+                self.beeping = false;
             }
             self.st -= 1;
         }
