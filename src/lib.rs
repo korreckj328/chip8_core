@@ -420,9 +420,9 @@ impl Emu {
 
         if self.st > 0 {
             if self.st == 1 {
-                self.beeping = false;
-            } else {
                 self.beeping = true;
+            } else {
+                self.beeping = false;
             }
             self.st -= 1;
         }
